@@ -7,6 +7,7 @@ import java.io.IOException;
 public class Map {
 
     private static Map instance;
+    private Tile[][] generatedMap;
 
     static {
         try {
@@ -27,13 +28,43 @@ public class Map {
             }
         }
         reader.close();
+        generateMap();
+    }
+
+    private void generateMap(){
+        generatedMap = new Tile[40][40];
+        for(int i = 0; i < 40; i++) {
+            for (int j = 0; j < 40; j++) {
+                switch (map[i][j]) {
+                    case 1:
+                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/trawa.png", true);
+                        break;
+                    case 2:
+                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/skaly.png", false);
+                        break;
+                    case 3:
+                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/woda.png", false);
+                        break;
+                    case 4:
+                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/drzewo.png", false);
+                        break;
+                    case 5:
+                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/mur.png", false);
+                        break;
+                    case 6:
+                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/sciezka.png", false);
+                        break;
+                    case 7:
+                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/dom.png", false);
+                        break;
+                }
+            }
+        }
+
     }
 
     public static Map getInstance() {
         return instance;
     }
 
-    public int[][] getMap() {
-        return map;
-    }
 }
