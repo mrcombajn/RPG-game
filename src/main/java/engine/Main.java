@@ -16,9 +16,9 @@ public class Main extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("GameScreen.fxml"));
         primaryStage.setTitle("Magnaci i Czarodzieje - The Game");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root,600,700));
         primaryStage.show();
-        //changeScene();
+
     }
 
 
@@ -26,9 +26,7 @@ public class Main extends Application {
         launch(args);
     }
 
-    public void changeScene() throws IOException {
-        Parent root = FXMLLoader.load(this.getClass().getResource("Test.fxml"));
-        stage.setScene(new Scene(root, 1366, 720));
+    public static Stage getStage() {
+        return stage;
     }
-
 }
