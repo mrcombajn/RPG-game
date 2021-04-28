@@ -5,11 +5,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import main.java.character.Gamer;
 
 import java.io.IOException;
 
 public class Main extends Application {
     static Stage stage;
+    private static Gamer gamer = new Gamer(10,100, 100,100, "Boris", 4, 32);
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
@@ -24,9 +27,14 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
     }
 
     public static Stage getStage() {
         return stage;
+    }
+
+    public static Gamer getGamer() {
+        return gamer;
     }
 }

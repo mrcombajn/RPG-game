@@ -1,13 +1,19 @@
 package main.java.map;
 
+import main.java.character.Gamer;
+import main.java.engine.Main;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Map {
 
     private static Map instance;
     private Tile[][] generatedMap;
+    private Gamer gamer = Main.getGamer();
 
     static {
         try {
@@ -37,25 +43,25 @@ public class Map {
             for (int j = 0; j < 40; j++) {
                 switch (map[i][j]) {
                     case 1:
-                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/trawa.png", true);
+                        generatedMap[i][j] = new Tile(i, j, "src/main/resources/textures/trawa.png", true);
                         break;
                     case 2:
-                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/skaly.png", false);
+                        generatedMap[i][j] = new Tile(i, j, "src/main/resources/textures/skaly.png", false);
                         break;
                     case 3:
-                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/woda.png", false);
+                        generatedMap[i][j] = new Tile(i, j, "src/main/resources/textures/woda.png", false);
                         break;
                     case 4:
-                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/drzewo.png", false);
+                        generatedMap[i][j] = new Tile(i, j, "src/main/resources/textures/drzewo.png", false);
                         break;
                     case 5:
-                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/mur.png", false);
+                        generatedMap[i][j] = new Tile(i, j, "src/main/resources/textures/mur.png", false);
                         break;
                     case 6:
-                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/sciezka.png", false);
+                        generatedMap[i][j] = new Tile(i, j, "src/main/resources/textures/sciezka.png", true);
                         break;
                     case 7:
-                        generatedMap[i][j] = new Tile(i, j, "../../resources/textures/dom.png", false);
+                        generatedMap[i][j] = new Tile(i, j, "src/main/resources/textures/dom.png", false);
                         break;
                 }
             }
@@ -65,6 +71,53 @@ public class Map {
 
     public static Map getInstance() {
         return instance;
+    }
+
+    public ArrayList<Tile> getMapFromGamerCoordinates() {
+        ArrayList<Tile> list = new ArrayList<>();
+
+        int gamerX = gamer.getX();
+        int gamerY = gamer.getY();
+
+        int leftX, rightX;
+        int topY, bottomY;
+
+        if(gamerX <= 4) {
+            leftX = 0;
+            rightX = 9;
+        }
+        else if(gamerX >= 35) {
+            rightX = 39;
+            leftX = 30;
+        }
+        else {
+            rightX = gamerX + 5;
+            leftX = gamerX - 4;
+        }
+
+        if(gamerY <= 4) {
+            topY = 0;
+            bottomY = 9;
+        }
+        else if(gamerY >= 35) {
+            bottomY = 39;
+            topY = 30;
+        }
+        else {
+            bottomY = gamerY + 5;
+            topY = gamerY - 4;
+        }
+
+        for(int i = topY; i <= bottomY; i++) {
+            for(int j = leftX; j <= rightX; j++) {
+                list.add(generatedMap[i][j]);
+                if(i == gamerY && j == gamerX) list.get(list.size()-1).setGamer(true);
+                else list.get(list.size()-1).setGamer(false);
+            }
+        }
+
+        System.out.println(gamerX + " " + gamerY);
+        return list;
     }
 
 }

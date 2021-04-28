@@ -5,11 +5,11 @@ public abstract class Character {
     protected int hp;
     protected int mana;
     protected int stamina;
-    protected int name;
+    protected String name;
     protected int x;
     protected int y;
 
-    public Character(int strength, int hp, int mana, int stamina, int name, int x, int y) {
+    public Character(int strength, int hp, int mana, int stamina, String name, int x, int y) {
         this.strength = strength;
         this.hp = hp;
         this.mana = mana;
@@ -17,5 +17,13 @@ public abstract class Character {
         this.name = name;
         this.x = x;
         this.y = y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }

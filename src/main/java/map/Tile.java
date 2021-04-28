@@ -5,7 +5,15 @@ public class Tile {
     private int y;
     private String filePath;
     private boolean enterable;
+    private boolean isGamer = false;
 
+    public void setGamer(boolean gamer) {
+        isGamer = gamer;
+    }
+
+    public boolean isGamer() {
+        return isGamer;
+    }
 
     public Tile(int x, int y, String filePath, boolean enterable) {
         this.x = x;
