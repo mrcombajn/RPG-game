@@ -120,4 +120,15 @@ public class Map {
         return list;
     }
 
+    public boolean moveGamer(int toX, int toY) {
+        int gamerNewX = gamer.getX() + toX;
+        int gamerNewY = gamer.getY() + toY;
+
+        if((gamerNewX < 0 || gamerNewX > 39) || (gamerNewY < 0 || gamerNewY > 39)) return false;
+        if(!generatedMap[gamerNewY][gamerNewX].isEnterable()) return false;
+
+        gamer.setX(gamerNewX);
+        gamer.setY(gamerNewY);
+        return true;
+    }
 }

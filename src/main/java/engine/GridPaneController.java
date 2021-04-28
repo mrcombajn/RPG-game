@@ -26,9 +26,22 @@ public class GridPaneController extends Thread{
         Main.getStage().addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
-                //   System.out.println(keyEvent.getCode());
-                //   System.out.println(keyEvent.getCode().toString().equals("RIGHT"));
-
+                switch(keyEvent.getCode().toString()) {
+                    case "UP":
+                        if(mapInstance.moveGamer(0,-1)) updateGameScreenMap(mapInstance.getMapFromGamerCoordinates());
+                        break;
+                    case "DOWN":
+                        if(mapInstance.moveGamer(0,1)) updateGameScreenMap(mapInstance.getMapFromGamerCoordinates());
+                        break;
+                    case "LEFT":
+                        if(mapInstance.moveGamer(-1,0)) updateGameScreenMap(mapInstance.getMapFromGamerCoordinates());
+                        break;
+                    case "RIGHT":
+                        if(mapInstance.moveGamer(1,0)) updateGameScreenMap(mapInstance.getMapFromGamerCoordinates());
+                        break;
+                    default:
+                        break;
+                }
             }
         });
     }
@@ -45,22 +58,7 @@ public class GridPaneController extends Thread{
     }
 
     private void getChildren() {
-
-            int liczba = 0;
-            images = gridPane.getChildren();
-       /*     for (Node node : images) {
-                // System.out.println(node);
-                if(node instanceof ImageView) {
-                  //  ((ImageView) node).setImage(new Image("@../../resources/textures/drzewo.png"));
-                    File file = new File("src/main/resources/textures/mur.png");
-                    Image img = new Image(file.toURI().toString(),true);
-                    ((ImageView) node).setImage(img);
-                   // System.out.println(((ImageView) node).getImage().getUrl());
-                    liczba++;
-                    //System.out.println(((ImageView) node).getId() + " " + ((ImageView) node).getImage());
-                }
-            }
-            System.out.println(liczba);*/
+        images = gridPane.getChildren();
     }
 
     public void updateGameScreenMap(ArrayList<Tile> map) {
@@ -76,9 +74,6 @@ public class GridPaneController extends Thread{
                 Image img = new Image(file.toURI().toString(),true);
                 ((ImageView) images.get(i)).setImage(img);
             }
-        }
-        for(Tile tile : mapInstance.getMapFromGamerCoordinates()) {
-            System.out.println(tile.getFilePath());
         }
     }
 

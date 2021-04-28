@@ -11,7 +11,7 @@ import java.io.IOException;
 
 public class Main extends Application {
     static Stage stage;
-    private static Gamer gamer = new Gamer(10,100, 100,100, "Boris", 4, 32);
+    private static Gamer gamer = new Gamer(10,100, 100,100, "Boris", 4, 35);
 
     @Override
     public void start(Stage primaryStage) throws Exception{
