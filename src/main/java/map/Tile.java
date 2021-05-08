@@ -3,8 +3,8 @@ package main.java.map;
 public class Tile {
     private int x;
     private int y;
-    private String filePath;
-    private boolean enterable;
+    private final String filePath;
+    private final boolean enterable;
     private boolean isGamer = false;
 
     public void setGamer(boolean gamer) {
