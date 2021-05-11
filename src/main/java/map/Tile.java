@@ -1,8 +1,8 @@
 package main.java.map;
 
 public class Tile {
-    private int x;
-    private int y;
+    private final int x;
+    private final int y;
     private final String filePath;
     private final boolean enterable;
     private boolean isGamer = false;
@@ -20,22 +20,6 @@ public class Tile {
         this.y = y;
         this.filePath = filePath;
         this.enterable = enterable;
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
     }
 
     public String getFilePath() {

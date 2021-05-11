@@ -36,7 +36,7 @@ public class Map {
         }
         reader.close();
         generateMap();
-        collisionController = new CollisionController();
+        collisionController = new CollisionController(37,11);
     }
 
     private void generateMap(){
@@ -99,12 +99,9 @@ public class Map {
         for(int i = topY; i <= bottomY; i++) {
             for(int j = leftX; j <= rightX; j++) {
                 list.add(generatedMap[i][j]);
-                if(i == gamerY && j == gamerX) list.get(list.size()-1).setGamer(true);
-                else list.get(list.size()-1).setGamer(false);
+                list.get(list.size()-1).setGamer(i == gamerY && j == gamerX);
             }
         }
-
-       // System.out.println(gamerX + " " + gamerY);
         return list;
     }
 
@@ -117,14 +114,7 @@ public class Map {
 
         gamer.setX(gamerNewX);
         gamer.setY(gamerNewY);
+        collisionController.checkCollision(gamerNewX, gamerNewY);
         return true;
-    }
-
-    private Tile getTileFromCoordinates(int x, int y) throws ArrayIndexOutOfBoundsException {
-        return generatedMap[y][x];
-    }
-
-    public Gamer getGamer() {
-        return gamer;
     }
 }
