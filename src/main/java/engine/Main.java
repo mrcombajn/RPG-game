@@ -6,12 +6,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.net.URI;
+import java.net.URL;
+
 public class Main extends Application {
     static Stage stage;
 
     @Override
     public void start(Stage primaryStage) throws Exception{
         stage = primaryStage;
+
+        URL url = getClass().getResource("GameScreen.fxml");
 
         Parent root = FXMLLoader.load(getClass().getResource("GameScreen.fxml"));
         primaryStage.setTitle("Magnaci i Czarodzieje - The Game");
