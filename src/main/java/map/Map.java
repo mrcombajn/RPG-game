@@ -1,7 +1,7 @@
-package main.java.map;
+package map;
 
-import main.java.character.Gamer;
-import main.java.engine.CollisionController;
+import character.Gamer;
+import engine.CollisionController;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

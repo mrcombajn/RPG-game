@@ -1,11 +1,12 @@
-package main.java.engine;
+package engine;
 
 import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import main.java.map.Map;
-import main.java.map.Tile;
+import map.Map;
+import map.Tile;
+
 
 import java.io.File;
 import java.util.ArrayList;

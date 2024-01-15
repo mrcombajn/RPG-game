@@ -1,4 +1,4 @@
-package main.java.map;
+package map;
 
 public class Tile {
     private final int x;

@@ -1,11 +1,11 @@
-package main.java.engine;
+package engine;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import main.java.map.Map;
+import map.Map;
 
 public class GridPaneController extends Thread{
     @FXML

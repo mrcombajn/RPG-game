@@ -1,4 +1,4 @@
-package main.java.character;
+package character;
 
 public abstract class Character {
     protected int strength;
